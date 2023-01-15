@@ -1,0 +1,12 @@
+class Solution {
+public:
+    vector<long long> sumOfThree(long long num) {
+        long long x;
+        // as we you that x , x+1 and x+3= num  
+        x=(num-3)/3;
+        if(x +(x+1)+(x+2)==num)
+             return {x,x+1,x+2};
+
+        return {};
+    }
+};
