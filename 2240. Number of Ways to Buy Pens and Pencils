@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long waysToBuyPensPencils(int total, int cost1, int cost2) {
+        long long now, ans=0;
+
+        if(total<cost1 && total < cost2)
+             return 1;
+        else {
+            for(long long i=0; i<=total/cost1; i++){
+                now=i*cost1;
+                if(now<=total){
+                    long long r=total-now;
+                    ans=ans+((r/cost2)+1);
+                }
+            }
+             return ans;
+        }
+
+       
+    }
+};
