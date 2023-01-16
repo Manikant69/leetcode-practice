@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<char> reverse(vector<char>&s, int i, int j){
+        if(i>=j)  return s;
+        char temp=s[i];
+        s[i]=s[j];
+        s[j]=temp;
+
+        return reverse(s, ++i, --j);
+    }
+
+    void reverseString(vector<char>& s) {
+        reverse(s, 0, s.size()-1);
+
+        for(int i=0; i<s.size(); i++){
+            cout<<s[i]<<" ";
+        }
+    }
+};
