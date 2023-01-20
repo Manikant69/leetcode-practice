@@ -1,0 +1,24 @@
+class Solution {
+public: 
+    int greater(vector<int>&h){
+        int max=0, ans=0;
+        for(int i=0; i<h.size(); i++){
+            if(h[i]>max){
+               max=h[i];
+               ans=i;
+            }
+        }
+        h[ans]=0;
+        return ans;
+    }
+
+
+    vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
+       vector<string>v;
+        for(int i=0; i<names.size(); i++){
+            int a=greater(heights);
+            v.push_back(names[a]);
+        }
+        return v;
+    }
+};
