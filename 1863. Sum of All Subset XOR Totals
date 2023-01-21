@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int numberXor(vector<int>&t)
+    {
+        int s=0;
+        for(int i=0; i<t.size(); i++){
+            s=s^t[i];
+        }
+        return s;
+    }
+
+    int subsetXORSum(vector<int>& nums) {
+        int sum=0;
+        vector<int>v;
+       for(int i=1; i<pow(2,nums.size()); i++)
+       {
+          v={};
+           for(int j=0; j<nums.size(); j++){
+               if(((i>>j)&1)==1)
+               v.push_back(nums[j]);
+               
+           }
+           sum+= numberXor(v);
+       } 
+       return sum;
+    }
+};
