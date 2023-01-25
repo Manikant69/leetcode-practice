@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maximumDifference(vector<int>& a) {
+        int N=a.size();
+        int m=a[N-1];
+        int max=-1;
+        
+        for(int i=N-2; i>=0; i--){
+           
+            if(m<=a[i])
+               m=a[i];
+               
+             else if(max<(m-a[i]))
+                    max=m-a[i];
+            
+               
+            
+        }
+        return max; 
+    }
+};
