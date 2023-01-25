@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool canWinNim(int n) {
+       while(n>0)
+       {
+           if(n<=3)
+             return true;
+
+            //if n is greater than 3 then you always take one stone
+           else
+           {
+               n--;
+           }
+           //your friend always take 3 stones 
+           n=n-3;
+       }
+       return false;
+    }
+};
