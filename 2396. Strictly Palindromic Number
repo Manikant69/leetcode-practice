@@ -1,0 +1,40 @@
+class Solution {
+public:
+    
+    string convert(int base, int num){
+        string s;
+        while(num>0){
+            s+=(num%base);
+            num=num/base;
+        }
+        return s;
+    }
+
+    bool checkPalindrome(string &s){
+        int n=s.length();
+        int i=0, j=n-1;
+        bool ans=true;
+        while(i<=n/2)
+        {
+            if(s[i]!=s[j])
+              return false;
+
+            i++;
+            j--;
+        }
+        return ans;
+    }
+
+    bool isStrictlyPalindromic(int n) {
+        bool a=true;
+       for(int i=2; i<=n-2; i++)
+       {
+          string ans=convert(i,n);
+          a=checkPalindrome(ans);
+
+          if(a!=true)
+            return false;
+       } 
+       return a;
+    }
+};
