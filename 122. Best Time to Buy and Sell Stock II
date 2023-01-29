@@ -27,3 +27,34 @@ public:
           return ans;
     }
 };
+
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n= prices.size();
+        int b=prices[0], s=0;
+        int ans = 0, max=0;
+        for(int i=1; i<n; i++)
+        {
+            if(b>prices[i])
+            {
+              b = prices[i];
+            }
+
+            else if(s < prices[i] )
+            {
+               s = prices[i];
+            }
+            
+            if(s>0)
+            {
+                ans+=s-b;
+                s=0;
+                b=prices[i];
+            }
+        }
+          return ans;
+    }
+};
