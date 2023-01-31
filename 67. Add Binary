@@ -1,0 +1,44 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+       int n = a.size()-1;
+       int m = b.size()-1;
+       int carry=0;
+       string s;
+
+       while(n >= 0 || m >= 0)
+       {
+           if(n >= 0 && m >= 0)
+           {
+            int val = ((a[n] - '0') + (b[m] - '0') + carry)%2;
+            carry=((a[n] - '0') + (b[m] - '0') + carry)/2;
+            s+=(val + '0');
+            n--; m--;
+           }
+
+           else if(n >= 0)
+           {
+            int val = ((a[n] - '0') + carry)%2;
+            carry=((a[n] - '0') + carry)/2;
+            s+=(val + '0');
+            n--;
+           }
+
+           else
+           {
+            int val = ((b[m] - '0') + carry)%2;
+            carry=((b[m] - '0') + carry)/2;
+            s+=(val + '0');
+            m--;
+           }
+         
+       }
+
+       if(carry > 0)
+          s.push_back(carry+'0');
+
+       reverse(s.begin(), s.end());
+
+       return s;
+    }
+};
