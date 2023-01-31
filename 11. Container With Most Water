@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int j = height.size()-1;  // right most element
+        int i = 0; //right most element
+
+        int area = 0;
+        
+        while(i<j)
+        {
+            int h = min ( height[i], height[j]);  // water will stop at the minimum height
+
+            area = max (area, h*( j- i));  // to find the maximum area
+
+            if( height[i]< height[j])    // because we find the greater of current value
+               i++;
+            else
+               j--; 
+        }
+        
+
+        return area;
+    }
+};
