@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int numberOfSubarrays(vector<int>& nums, int k) {
+       int cnt=0, ans=0, odd=0, j=0; 
+
+       for(int i=0; i<nums.size(); i++)
+       {
+           if(nums[i]%2==1)
+           {
+               odd++;
+               cnt=0;
+           }
+           while(odd==k)
+           {
+               cnt++;
+               odd -= (nums[j]%2==1);
+               j++;
+           }
+           ans += cnt;
+       } 
+    return ans;
+    }
+};
