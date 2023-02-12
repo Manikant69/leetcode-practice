@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> vowelStrings(vector<string>& words, vector<vector<int>>& queries) {
+        vector<int>ans;
+        vector<int> v;
+        int cnt=0;
+
+        for(int i=0; i<words.size(); i++)
+        {
+            int n = words[i].size();
+          if(words[i][0]=='a' || words[i][0]=='e' || words[i][0]=='o' || words[i][0]=='i' ||
+                words[i][0]=='u')
+               {
+                   if((words[i][n-1]=='a' || words[i][n-1]=='e' || words[i][n-1]=='o' ||
+                    words[i][n-1]=='i' || words[i][n-1]=='u'))
+
+                   cnt++;
+               }
+
+               v.push_back(cnt);
+        }
+
+
+        for(int i=0; i<queries.size(); i++)
+        {
+            int n = queries[i][0];
+            int m = queries[i][1];
+            if(n==0)
+                ans.push_back(v[m]);
+            else
+                ans.push_back(v[m]-v[n-1]);
+        }
+        return ans;
+    }
+};
