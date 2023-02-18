@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int distinctIntegers(int n) 
+    {
+        int cnt = 1, num = n;
+
+        for( long i=n; i>0; i--)   
+        {
+            if( num%i == 1)
+               cnt++;
+            num = i;
+        }
+        return cnt;
+
+        // we can also do this 
+        // if( n==1)   return 1;
+        // else  return n-1;
+        }
+};
