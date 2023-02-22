@@ -1,0 +1,37 @@
+class Solution {
+public:
+    string toHex(int num1) {
+        string ans;
+        unsigned int num = num1;
+        if(num==0)  return "0";
+
+            while(num>=16)
+            {
+                int r = num%16;
+                if(r<10)
+                ans+=(r+'0');
+               
+                else
+                {
+                char ch=(r+87);
+                ans+=ch;
+                }
+
+                num = num/16;
+            }
+
+            if(num<10)
+                ans+=(num+'0');
+               
+            else
+            {
+                char ch=(num+87);
+                ans+=ch;
+            }
+
+
+            reverse(ans.begin(), ans.end());
+
+        return ans;
+    }
+};
