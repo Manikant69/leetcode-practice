@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) 
+    {
+        vector<pair<int , string>>p;
+        for(int i=0; i<list1.size(); i++)
+        {
+            for(int j=0; j<list2.size(); j++)
+            {
+                if(list1[i] == list2[j])
+                {
+                    p.push_back({i+j, list1[i]});
+                }
+
+            }
+        }
+        sort(p.begin(), p.end());
+
+        vector<string> ans;
+        int i, a=0, t=0;
+        ans.push_back(p[0].second);
+        for( i=1; i<p.size(); i++)
+        {
+            if(p[i].first == p[i-1].first)
+            {
+                ans.push_back(p[i].second);
+            }
+            else
+            {
+                break;
+            }
+                
+        }
+
+        return ans;
+    }
+};
