@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string Invert(string s)
+    {
+        string t;
+        for(int i=0; i<s.length(); i++)
+        {
+            if(s[i]=='1')
+                t+='0';
+            else
+                t+='1';
+        }
+        return t;
+    }
+
+
+    char findKthBit(int n, int k) 
+    {
+        string s ="0";
+        int i=1;
+        while(n>1)
+        {
+            string temp;
+            temp = s;
+            //s+=temp[i-1];
+            s+='1';
+            temp = Invert(temp);
+            reverse(temp.begin(), temp.end());
+            s+=(temp);
+            i++;
+            n--;
+        }
+
+        return s[k-1];
+    }
+};
