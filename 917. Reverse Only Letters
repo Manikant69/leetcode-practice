@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string reverseOnlyLetters(string s) 
+    {
+       int st = 0, e = s.length()-1;
+       bool flag1=false, flag2=false;
+
+       while(st<e)
+       {
+           if((s[st]>=65 && s[st]<=90) || (s[st]>=97 && s[st]<=122 ))
+           {
+                flag1 = true;
+           }
+           if((s[e]>=65 && s[e]<=90) || (s[e]>=97 && s[e]<=122 ))
+           {
+               flag2 = true;
+           }
+
+           if(flag1==true && flag2==true)
+           {
+                swap(s[st], s[e]);
+                st++;
+                e--;
+                flag1=false;
+                flag2=false;
+           }
+
+           else
+           {
+           if(flag1==false) st++;
+           if(flag2==false) e--;
+           }
+       }
+       return s;
+    }
+};
