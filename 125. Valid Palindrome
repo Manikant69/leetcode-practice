@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        string q;
+
+        for(int i=0; i<s.length(); i++)
+        {
+            if((s[i]<=90 && s[i]>=65) || (s[i]>=97 && s[i]<=122) || (s[i]>=48 && s[i]<=57))
+            {
+                if((s[i]<=90 && s[i]>=65))
+                    q+=(s[i]+32);
+                else
+                    q+=s[i];
+            } 
+        }
+        int st=0, e=q.length()-1;
+      
+        while(st<e)
+        {
+            if(q[st] != q[e])
+                return false;
+            e--;
+            st++;
+        }
+        return true;
+    }
+};
