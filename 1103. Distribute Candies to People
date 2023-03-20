@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int n) 
+    {
+        vector<int>ans(n);
+        int i = 0, r = 1;
+
+        while(candies > 0)
+        {
+            if(candies>=r)
+            {
+                ans[i] = ans[i] + r;
+                candies -= r;
+                i++;
+            }
+            else
+            {
+                ans[i] = ans[i] + candies;
+                candies = 0;
+            }
+            if(n == i)
+            {
+                i=0;
+            }
+            r++;
+        }
+
+        return ans;
+    }
+};
