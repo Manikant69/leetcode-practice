@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int totalMoney(int n) 
+    {
+        int ans = 0;
+
+        int j = 0, k = 1;
+        for(int i=1; i<=n; i++)
+        {
+            ans = ans + k + j;
+
+            k++;
+
+            if(i%7==0)
+            {
+                j = i/7;
+                k = 1;
+            }
+        }
+
+
+        return ans;
+    }
+};
