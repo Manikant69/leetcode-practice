@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int countPrefixes(vector<string>& words, string s) 
+    {
+        int cnt = 0, n = s.length();
+        for(int i=0; i<words.size(); i++)
+        {
+            int j = 0, m = words[i].length(), k = 0, a = 0;
+            while(j<m && k<n && n>=m)
+            {
+                if(words[i][j]==s[k])
+                {
+                    a = 1;
+                }
+                else
+                {
+                    a = 0;
+                    break;
+                }
+                j++;
+                k++;
+                
+            }
+            if(a == 1)  cnt++;
+        }
+        return cnt;
+    }
+};
