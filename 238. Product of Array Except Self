@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) 
+    {
+        int total_product = 1;
+        int cnt_zeros = 0;
+        vector<int>ans(nums.size());
+
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums[i]==0)
+            {
+                cnt_zeros++;
+            }
+            else
+            {
+                total_product *= nums[i];
+            }
+        }
+
+        if(cnt_zeros == 0)
+        {
+            for(int i=0; i<nums.size(); i++)
+            {
+                ans[i] = (total_product/nums[i]);
+            }
+
+            return ans;
+        }
+        else if(cnt_zeros == 1)
+        {
+            for(int i=0; i<nums.size(); i++)
+            {
+                if(nums[i] == 0)
+                {
+                    ans[i] = total_product;
+                }
+            }
+            return ans;
+        }
+
+        else
+            return ans;
+    }
+};
