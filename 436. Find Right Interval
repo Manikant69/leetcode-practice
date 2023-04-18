@@ -1,0 +1,48 @@
+class Solution {
+public:
+    vector<int> findRightInterval(vector<vector<int>>& intervals) 
+    {
+        vector<pair<int, int>> start;
+
+        for(int i=0; i<intervals.size(); i++)
+        {
+            start.push_back({intervals[i][0], i});
+        }
+
+        sort(start.begin(), start.end());
+        int ans;
+
+        vector<int> result;
+
+        for(int i=0; i<intervals.size(); i++)
+        {
+            ans = -1;
+
+            int s = 0, e = start.size()-1;
+            int mid = s + (e - s)/2;
+            while(s<=e)
+            {
+                if(start[mid].first == intervals[i][1])
+                {
+                    ans = start[mid].second;
+                    break;
+                }
+
+                else if(start[mid].first > intervals[i][1])
+                {
+                    ans = start[mid].second;
+                    e = mid - 1;
+                }
+                else
+                    s = mid + 1;
+
+                mid = s + (e - s)/2;
+
+
+            }
+            result.push_back(ans);
+        }
+
+        return result;
+    }
+};
