@@ -1,0 +1,43 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) 
+    {
+        int n = nums.size();
+
+        int i , j ;
+        
+            while(k>n)
+            {
+                k = k - n;
+            }
+
+             i = 0, j = nums.size()-k-1;
+            //reverse the left of the array
+            while(i<j)
+            {
+                swap(nums[i],nums[j]);
+                i++;
+                j--;
+            }
+
+            i = nums.size()-k, j = nums.size()-1;
+            //reverse the k elements of the array
+            while(i<j)
+            {
+                swap(nums[i], nums[j]);
+                i++;
+                j--;
+            }
+
+            i = 0, j = nums.size()-1;
+
+            //reverse total elements of the array
+            while(i<j)
+            {
+                swap(nums[i], nums[j]);
+                i++;
+                j--;
+            }
+        
+    }
+};
