@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+    int cnt_capital = 0;
+    int cnt_small = 0;
+    
+    for(int i=0; i<word.length(); i++)
+    {
+        if(word[i]>=65 && word[i]<=90)
+        {
+            cnt_capital++;
+        }
+        else
+        {
+            cnt_small++;
+        }
+        
+    }
+
+    if(cnt_capital == word.length() || cnt_small == word.length())
+        return true;
+    else if((word[0]>=65 && word[0]<=90) && cnt_capital==1)
+        return true;
+    else
+        return false;
+    }    
+};
