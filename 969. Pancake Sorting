@@ -1,0 +1,52 @@
+class Solution {
+public:
+    void reverse(vector<int>&arr, int k)
+    {
+        int i = 0, j = k-1;
+        while(i<j)
+        {
+            swap(arr[i], arr[j]);
+            i++;
+            j--;
+        }
+    }
+    vector<int> pancakeSort(vector<int>& arr) {
+        int size = arr.size();
+        vector<int> ans;
+        while(1)
+        {
+            int max = 0;
+            int k = 0 , k2 = 0;
+            for(int i=0; i<size; i++)
+            {
+                if(max < arr[i])
+                {
+                    max = arr[i];
+                    k = i+1;
+                }
+            }
+            reverse(arr, k);
+            reverse(arr, size);
+            if(k != size)
+            {
+                ans.push_back(k);
+                ans.push_back(size);
+            }
+
+            int cnt = 0;
+            for(int i=1; i<arr.size(); i++)
+            {
+                if(arr[i-1] > arr[i])
+                    cnt++;
+            }
+
+            if(cnt==0)
+                return ans;
+
+            size--;
+            
+        }
+
+        return ans;
+    }
+};
