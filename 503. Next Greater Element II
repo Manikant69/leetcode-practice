@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        vector<int> ans;
+
+        for(int i=0; i<nums.size(); i++)
+        {
+            int j = i+1, ans1 = -1;
+            
+
+            //if the i is at last position j will be 0
+            j = j%(nums.size());
+
+            while( i!=j )
+            {
+                if(nums[i]<nums[j])
+                {
+                    ans1 = nums[j];
+                    break;
+                }
+
+                j++;
+
+                // if(j==nums.size())
+                //     j = 0;
+
+                //we can also use this to circulate the array
+                j = j%nums.size();
+
+            }
+            ans.push_back(ans1);
+        }
+        return ans;
+    }
+};
