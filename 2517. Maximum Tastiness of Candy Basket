@@ -1,0 +1,46 @@
+class Solution {
+public:
+    bool isPossible(vector<int>& price, int k, int expected_test)
+    {
+        int k_cnt = 1;
+        int position = 0;
+
+        for(int i=1; i<price.size(); i++)
+        {
+            if((price[i] - price[position]) >= expected_test)
+            {
+                k_cnt++;
+                position = i;
+            }
+
+
+            if(k == k_cnt)
+                return true;
+        }
+        return false;
+    }
+    int maximumTastiness(vector<int>& price, int k) {
+        sort(price.begin(), price.end());
+        int ans = 0;
+        int s = 0, e = *max_element(price.begin(), price.end());
+
+        int mid = s + (e - s)/2;
+
+        while(s<=e)
+        {
+           if(isPossible(price, k, mid))
+           {
+               ans = max(ans, mid);
+               s = mid + 1;
+           } 
+           else
+           {
+               e = mid - 1;
+           }
+
+           mid = s + (e - s)/2;
+        }
+
+        return ans;
+    }
+};
