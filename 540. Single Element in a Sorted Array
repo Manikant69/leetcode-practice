@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        int s = 0, e = nums.size()-1;
+        int mid = s + (e - s)/2;
+
+        while(s<e)
+        {
+            if(mid % 2 == 1)
+            {
+                mid--;
+            }
+            // if first occurance is even it means before this all element are at perfect position, so go in right part
+            if(nums[mid]==nums[mid+1]){
+                s = mid + 2;
+            }
+
+            // there is a number which takes the wrong place so check in left part but this may be that number go -> e = mid
+            else {
+                e = mid;
+            }
+
+            mid = s + (e - s)/2;
+
+        }
+
+        return nums[s];
+    }
+};
