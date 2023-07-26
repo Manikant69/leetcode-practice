@@ -1,0 +1,48 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        //it means if head-> val == val skip these nodes 
+        while(head != NULL && head -> val == val)
+        {
+            head = head -> next;
+        }
+
+        //if all the values of nodes are equal to val means head == NULL . so, list is empty 
+        if(head == NULL)
+            return NULL;
+        
+        ListNode* temp = head;
+
+        //it means atleast one node is present so (temp -> next) is exists.
+        while(temp -> next != NULL)
+        {
+
+            // if the next node is equal then skip the node
+            if(temp ->next -> val == val)
+            {
+                ListNode* nodeToDelete = temp -> next;
+                ListNode* next_node = temp -> next -> next;
+
+                delete(nodeToDelete);
+                temp -> next = next_node;
+            }
+            //otherwise go ahead
+            else 
+            {
+                temp = temp -> next;
+            }
+        }
+
+        return head;
+    }
+};
