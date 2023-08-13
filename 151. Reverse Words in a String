@@ -1,0 +1,66 @@
+class Solution {
+public:
+    void reverseS(string &s, int i, int j){
+      while(i<j)
+      {
+        swap(s[i], s[j]);
+        i++;
+        j--;
+      }
+    }
+
+    
+
+    string reverseWords(string s) 
+    {
+        string st;
+
+        reverse(s.begin(), s.end());
+      
+      int l = 0;
+
+      //remove extra spaces
+
+      bool extra = false;
+
+      for(int i=0; i<s.length(); i++)
+      {
+           if(s[i] == ' ')
+           {
+               if(extra == false)
+               {
+                   continue;
+               }
+               else
+                    st+=s[i];
+               extra = false;
+           }
+           else
+           {
+               st += s[i];
+               extra = true;
+           }
+
+
+      }
+
+
+
+      //reversing all the words  when we get a space
+      for(int i=0; i<st.length(); i++)
+      {
+        if(st[i] == ' ')
+        {
+          reverseS(st, l, i-1);
+          l = i+1;
+        }
+      }
+
+      reverseS(st, l, st.length()-1);
+
+      if(st[st.length() -1] == ' ')
+        st.pop_back();
+
+      return st;  
+    }
+};
