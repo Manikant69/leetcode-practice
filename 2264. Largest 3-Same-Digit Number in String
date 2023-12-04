@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string largestGoodInteger(string num) {
+        string max = "";
+        string match = "";
+
+        for(int i=2; i<num.length(); i++)
+        {
+            if(num[i-1] == num[i-2] && num[i] == num[i-2])
+            {
+                match += num[i];
+                match += num[i];
+                match += num[i];
+            }
+            
+
+            if(match.length()==3)
+            {
+                if(max.length()==0)
+                {
+                    max = match;
+                }
+                else if(max[0]-'0' < match[0]-'0')
+                {
+                    max = match;
+                }
+
+                match = "";
+            }
+
+
+        }
+
+        return max;
+    }
+};
