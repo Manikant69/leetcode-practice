@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        int ans=0;
+        int n=dividend;
+        int n1=divisor;
+
+        if(dividend==divisor)  return 1;
+        if(dividend == INT_MIN && divisor == -1)
+            return INT_MAX;
+        if(dividend == INT_MIN && divisor == 1)
+            return INT_MIN;
+
+      //Converting divisors and dividend to their positive values
+        long int dd = abs(dividend), dv = abs(divisor);
+        
+        //Result Variables
+        int res=0;
+        while(dv<=dd) {
+            long int mul=dv, tmp=1;
+            while(mul<=dd-mul) {
+                mul+=mul;
+                tmp+=tmp;
+            }
+            ans+=tmp;
+            dd-=mul;
+        }
+        if((n1<0 && n>0) || (n1>0 && n<0))
+           return  -ans;
+
+        
+        return ans;
+    }
+};
