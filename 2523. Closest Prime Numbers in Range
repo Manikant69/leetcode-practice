@@ -1,0 +1,55 @@
+class Solution {
+public:
+    bool isPrime(int x)
+    {
+        if(x == 2 || x == 3)
+        {
+            return true;
+        }
+
+        if(x%2 == 0 || x%3 == 0)
+        {
+            return false;
+        }
+
+        for(int i=5; i*i<=x; i+=6)
+        {
+            if(x%i==0 || x%(i+2)==0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    vector<int> closestPrimes(int left, int right) {
+        vector<int> pNums;
+        
+        for(int i = left; i<=right; i++)
+        {
+            if(isPrime(i) && i != 1)
+            {
+                pNums.push_back(i);
+            }
+        }
+
+        int a = 0, b = 0, diff = INT_MAX;
+        if(pNums.size() > 1){
+            for(int i=0; i<pNums.size()-1; i++)
+            {
+                if( diff > (pNums[i+1] - pNums[i]))
+                {
+                    a = pNums[i];
+                    b = pNums[i+1];
+                    diff = b - a;
+                }
+            }
+        }
+
+        if(a == 0)
+            return {-1, -1};
+
+        return {a, b};
+    }
+};
