@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+
+       stack<char> s1; //to store the character
+       stack<int> s2; //to store the invalid character index
+       s2.push(-1);
+
+       int maxi = 0;
+
+       for(int i=0; i<s.length(); i++)
+       {    
+           //we consider first opening bracket is a problem character     //because we assume that we can't get it's pair(closing barcket)
+           if(s[i] == '(')
+           {
+                s1.push(s[i]);
+                s2.push(i);
+           }
+           else
+           {    
+        //if character stack is empty means that is a problem character
+               if(s1.empty())
+               {
+                   s2.push(i);
+               }
+               else //we get a pair
+               {
+                   s1.pop();
+                   s2.pop();
+
+                   int a = s2.top();//last problem index
+
+                   if(i-a > maxi) //calculate the maximum length
+                    maxi = i - a;
+               }
+           }
+       } 
+
+
+       return maxi;
+    }
+};
