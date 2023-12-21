@@ -1,0 +1,76 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(root == NULL)
+        {
+            return 0;
+        }
+
+        // if(root -> left == NULL)
+        // {
+        //     return 1 + minDepth(root -> right);
+        // }
+        
+        // if(root -> right == NULL)
+        // {
+        //     return 1 + minDepth(root -> left);
+        // }
+
+
+        // int left = minDepth(root -> left);
+        // int right = minDepth(root -> right);
+
+        // return min(left, right) + 1;
+
+
+
+        /* second approach using queue */
+
+        queue<TreeNode*> q;
+        q.push(root);
+
+        int cnt = 0;
+
+        while(!q.empty())
+        {
+            cnt++;
+
+            int size = q.size();
+
+            for(int i=0; i<size; i++)
+            {
+                TreeNode* front = q.front();
+                q.pop();
+
+                if(front -> left)
+                {
+                    q.push(front -> left);
+                }
+
+                if(front -> right)
+                {
+                    q.push(front -> right);
+                }
+
+                //we find the first leaf node
+                if(front -> left == NULL && front -> right == NULL)
+                    return cnt;
+            }
+        }
+
+
+        return -1;
+
+    }
+};
