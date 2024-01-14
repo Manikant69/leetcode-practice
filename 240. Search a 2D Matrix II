@@ -22,3 +22,35 @@ public:
         return false;
     }
 };
+
+
+/* second approach  TC : O(m + n) */
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+    {
+        int n = matrix.size();
+        int m = matrix[0].size();
+
+        //we are comparing from right top values because from top to bottom all elements are greater and right to left all are smaller  
+        int row = 0, col = m - 1;
+
+        while(row < n && col >= 0)
+        {
+            if(target == matrix[row][col])
+            {
+                return true;
+            }
+            else if(target > matrix[row][col])
+            {
+                row++;
+            }
+            else{
+                col--;
+            }
+        }
+
+        return false;
+    }
+};
